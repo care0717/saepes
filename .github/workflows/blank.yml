@@ -17,7 +17,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-saepes-yarn-
     - name: Run install
-      if: steps.cache.outputs.cache-hit != 'true'
       run: yarn
     - name: Run test
       run: yarn test --watchAll=false
