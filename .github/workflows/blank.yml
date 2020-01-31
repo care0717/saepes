@@ -7,13 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Cache node_modules
-      uses: actions/cache@preview
+    - name: Get yarn cache
+      id: yarn-cache
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - uses: actions/cache@v1
       with:
-        path: ./node_modules
-        key: ${{ runner.os }}-saepes-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
-        restore-keys:
-          ${{ runner.os }}-saepes-
+        path: ${{ steps.yarn-cache.outputs.dir }}
+        key: ${{ runner.os }}-saepes-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-saepes-yarn-
     - name: Run install
       if: steps.cache.outputs.cache-hit != 'true'
       run: yarn
