@@ -18,5 +18,7 @@ jobs:
           ${{ runner.os }}-saepes-yarn-
     - name: Run install
       run: yarn
+    - name: Run lint
+      run: yarn run format-check
     - name: Run test
-      run: yarn test --watchAll=false
+      run: yarn test
