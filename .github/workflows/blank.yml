@@ -7,7 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Cache node_modules
+      uses: actions/cache@preview
+      with:
+        path: ./node_modules
+        key: ${{ runner.os }}-saepes-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+        restore-keys:
+          ${{ runner.os }}-saepes-
     - name: Run install
+      if: steps.cache.outputs.cache-hit != 'true'
       run: yarn
     - name: Run test
       run: yarn test --watchAll=false
