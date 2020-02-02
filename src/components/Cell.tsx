@@ -7,7 +7,6 @@ export const Cell: React.FC = () => {
       <style jsx>{`
         div {
           background: #fff;
-          border: 1px solid #999;
           float: left;
           font-size: 1vh;
           font-weight: bold;

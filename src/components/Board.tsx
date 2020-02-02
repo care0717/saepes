@@ -1,7 +1,7 @@
 import React from "react";
-import "../App.css";
 import { range } from "../utils/array";
-import { Row } from "./Row";
+import { CellRow } from "./CellRow";
+import { GrooveRow } from "./GrooveRow";
 
 interface Props {
   height: number;
@@ -9,11 +9,16 @@ interface Props {
 }
 
 export const Board: React.FC<Props> = (props: Props) => {
+  const addRow = (acc: Array<React.ReactElement>, _: number) => {
+    acc.push(<GrooveRow size={props.width} />);
+    acc.push(<CellRow size={props.width} />);
+    return acc;
+  };
   return (
     <div>
-      {range(0, props.height - 1).map(_ => (
-        <Row size={props.width} />
-      ))}
+      {range(0, props.height - 2).reduce(addRow, [
+        <CellRow size={props.width} />
+      ])}
     </div>
   );
 };
