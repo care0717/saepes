@@ -9,15 +9,15 @@ interface Props {
 }
 
 export const Board: React.FC<Props> = (props: Props) => {
-  const addRow = (acc: Array<React.ReactElement>, _: number) => {
+  const addRow = (acc: Array<React.ReactElement>, i: number) => {
     acc.push(<GrooveRow size={props.width} />);
-    acc.push(<CellRow size={props.width} />);
+    acc.push(<CellRow row={i} size={props.width} />);
     return acc;
   };
   return (
     <div>
-      {range(0, props.height - 2).reduce(addRow, [
-        <CellRow size={props.width} />
+      {range(1, props.height - 1).reduce(addRow, [
+        <CellRow row={0} size={props.width} />
       ])}
     </div>
   );

@@ -19,14 +19,16 @@ export const GrooveRow: React.FC<Props> = (props: Props) => {
   return (
     <>
       <div>
-        {range(0, props.size - 1).reduce(addCrossSectionAndGroove, [
+        {range(1, props.size - 1).reduce(addCrossSectionAndGroove, [
           <HorizontalGroove />
         ])}
       </div>
       <style jsx>{`
-        clear: both;
-        content: "";
-        display: table;
+        div {
+          clear: both;
+          content: "";
+          display: table;
+        }
       `}</style>
     </>
   );

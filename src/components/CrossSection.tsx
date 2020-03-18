@@ -10,8 +10,8 @@ export const CrossSection: React.FC = () => {
           float: left;
           margin: 0;
           padding: 0;
-          height: 1.2vh;
-          width: 1.2vh;
+          height: 1.2vmin;
+          width: 1.2vmin;
         }
       `}</style>
     </>
