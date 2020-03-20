@@ -17,8 +17,8 @@ export const HorizontalGroove: React.FC = () => {
       <style jsx>{grooveStyle}</style>
       <style jsx>{`
         div {
-          height: 1.2vh;
-          width: 7vh;
+          height: 1.2vmin;
+          width: 7vmin;
         }
       `}</style>
     </>
@@ -32,8 +32,8 @@ export const VerticalGroove: React.FC = () => {
       <style jsx>{grooveStyle}</style>
       <style jsx>{`
         div {
-          height: 7vh;
-          width: 1.2vh;
+          height: 7vmin;
+          width: 1.2vmin;
         }
       `}</style>
     </>
